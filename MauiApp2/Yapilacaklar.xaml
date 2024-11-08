@@ -3,19 +3,24 @@
              x:Class="MauiApp2.Yapilacaklar"
              Title="Yapılacaklar">
     <StackLayout Padding="20">
-        <!-- Yeni Not Ekleme Alanı -->
+        <!-- yeni Not Ekleme Alanı -->
         <Entry x:Name="NoteEntry" Placeholder="Yapılacak notunuzu girin..." />
         <Button Text="Ekle" Clicked="OnAddNoteClicked" />
 
         <!-- notlar listesi -->
         <CollectionView x:Name="NotesCollectionView">
         <CollectionView.ItemTemplate>
-         <DataTemplate>
-          <StackLayout>
-     <Label Text="{Binding}" FontSize="Medium" Padding="5"/>
-     </StackLayout>
-        </DataTemplate>
-       </CollectionView.ItemTemplate>
-    </CollectionView>
+        <DataTemplate>
+        <StackLayout Orientation="Horizontal" Padding="5">
+        <Label Text="{Binding}" FontSize="Medium" VerticalOptions="Center" />
+        <Button Text="Sil" Clicked="OnDeleteNoteClicked" 
+          CommandParameter="{Binding}" 
+          BackgroundColor="Red" 
+          TextColor="White" 
+          Margin="10,0,0,0"/>
+         </StackLayout>
+         </DataTemplate>
+         </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 </ContentPage>
