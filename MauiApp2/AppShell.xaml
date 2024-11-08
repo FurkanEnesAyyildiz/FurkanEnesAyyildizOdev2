@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiApp2.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiApp2"
+    Shell.FlyoutBehavior="Flyout"
+    Title="MauiApp2">
+    
+    <FlyoutItem Title="Ana Sayfa" Icon="home.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+    </FlyoutItem>
+
+  
+    <FlyoutItem Title="Kredi Hesaplama" Icon="calculator.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:KrediHesaplama}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Vucut Kitle Indeksi" Icon="calculator.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:VucutKitleIndeksi}" />
+        </Tab>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Renk Seçimi" Icon="calculator.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:RenkSecimi}" />
+        </Tab>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Yapılacaklar" Icon="calculator.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:Yapilacaklar}" />
+        </Tab>
+    </FlyoutItem>
+</Shell>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage"
+             Title="Ana Sayfa">
+    <ScrollView>
+        <StackLayout Padding="20">
+        <!-- Başlık -->
+        <Label Text="Ana Sayfa" FontSize="24" HorizontalOptions="CenterAndExpand" />
+
+        <!-- Resim Alanı ve Yükleme Butonu -->
+        <Image x:Name="profileImage"  WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" />
+        <Button Text="Resim Yükle"   Clicked="OnImageUploadClicked" HorizontalOptions="Center" />
+
+        <!-- İsim Soyisim -->
+        <Label Text="Furkan Enes Ayyıldız" FontSize="Header" HorizontalOptions="Center" />
+        <Label Text="No: 22010310017" FontSize="Header" HorizontalOptions="Center" />
+
+        <!-- Üniversite ve Bölüm -->
+        <Label Text="Bartın Üniversitesi Bilgisayar Mühendisliği" FontSize="Large" HorizontalOptions="Center" />
+
+        <!-- Ödev Bilgisi -->
+        <Label Text="ÖDEV-1" FontSize="50" HorizontalOptions="Center" />
+
+        <!-- Uyarı Metni -->
+        <Label Text="DİKKAT: Ödevinizi çalışır halde yükleyin." TextColor="Red" HorizontalOptions="Center" />
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
