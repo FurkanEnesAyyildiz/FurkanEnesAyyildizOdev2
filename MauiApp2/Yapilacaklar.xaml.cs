@@ -7,10 +7,12 @@ namespace MauiApp2
 {
     public partial class Yapilacaklar : ContentPage
     {
-        // Yapýlacak notlarýn tutulduðu liste
+        // yapÄ±lacak notlarÄ±n tutulduÄŸu liste
         private ObservableCollection<string> notes;
 
-        // Notlarýn kaydedileceði dosya yolu
+
+
+        // notlarÄ±n kaydedileceÄŸi dosya yolu
         private readonly string notesFilePath = Path.Combine(FileSystem.AppDataDirectory, "notes.txt");
 
         public Yapilacaklar()
@@ -19,34 +21,41 @@ namespace MauiApp2
             notes = new ObservableCollection<string>();
             NotesCollectionView.ItemsSource = notes;
 
-            // Notlarý yükle
+            // notlarÄ± yÃ¼kle
             LoadNotes();
         }
 
-        // Yeni not ekleme iþlemi
+
+        // yeni not ekleme iÅŸlemi
         private void OnAddNoteClicked(object sender, EventArgs e)
         {
             string newNote = NoteEntry.Text;
             if (!string.IsNullOrWhiteSpace(newNote))
             {
-                notes.Add(newNote); // Notu listeye ekle
-                NoteEntry.Text = string.Empty; // Giriþ alanýný temizle
-                SaveNotes(); // Notlarý kaydet
+                notes.Add(newNote); // notu listeye ekle
+                NoteEntry.Text = string.Empty; // giriÅŸ alanÄ±nÄ± temizle
+                SaveNotes(); // notlarÄ± kaydet
             }
             else
             {
-                DisplayAlert("Hata", "Lütfen bir not girin.", "Tamam");
+                DisplayAlert("Hata", "LÃ¼tfen bir not girin.", "Tamam");
             }
         }
 
-        // Notlarý dosyaya kaydetme
+
+        // notlarÄ± dosyaya kaydetme
         private async void SaveNotes()
         {
             var notesData = string.Join("\n", notes);
             await File.WriteAllTextAsync(notesFilePath, notesData);
         }
 
-        // Uygulama açýldýðýnda notlarý yükleme
+
+
+
+
+
+        // uygulama aÃ§Ä±ldÄ±ÄŸÄ±nda notlarÄ± yÃ¼kleme
         private async void LoadNotes()
         {
             if (File.Exists(notesFilePath))
@@ -54,12 +63,19 @@ namespace MauiApp2
                 var notesData = await File.ReadAllTextAsync(notesFilePath);
                 var loadedNotes = notesData.Split('\n');
                 foreach (var note in loadedNotes)
-                {
-                    if (!string.IsNullOrWhiteSpace(note))
-                    {
-                        notes.Add(note);
-                    }
+                { if (!string.IsNullOrWhiteSpace(note))
+                  {notes.Add(note); }
                 }
+            }
+        }
+        // not silme iÅŸlemi
+        private void OnDeleteNoteClicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var noteToDelete = button?.CommandParameter as string;
+            if (!string.IsNullOrEmpty(noteToDelete))
+            {  notes.Remove(noteToDelete); // notu listeden kaldÄ±rma
+               SaveNotes(); 
             }
         }
     }
